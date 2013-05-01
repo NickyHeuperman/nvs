@@ -1,7 +1,7 @@
 module ActiveRecord
   class Yapeal < ActiveRecord::Base
     self.abstract_class = true
-    establish_connection(MyApp::Application.config.yapeal_url)
+    establish_connection(NovusDominatum::Application.config.yapeal_url)
 
   end
 

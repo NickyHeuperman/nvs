@@ -34,4 +34,5 @@ NovusDominatum::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  config.yapeal_url= 'mysql2://nvs:nvs123@dev-ice.com:3306/yapeal'
 end
