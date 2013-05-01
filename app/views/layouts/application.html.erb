@@ -1,14 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE html!>
 <html>
-<head>
-  <title>NovusDominatum</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+	<%= stylesheet_link_tag "reset","960/960.css","style.css","carousel.css","fitting.css" %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="js/carousel.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="site">
+				<%= image_tag("header.png", :alt => "logo", :id=>"header") %>
+				<div class="container_12" id="nav_div">
+					<ol id="nav">
+						<li><a href="index.php">Home</a></li>
+						<li class="nav_seperator"></li>
+						<li>Killboard</li>
+						<li class="nav_seperator"></li>
+						<li><a href="corporations.php">Corporations</a></li>
+						<li class="nav_seperator"></li>
+						<li>Diplomatic</li>
+						<li class="nav_seperator"></li>
+						<li><a href="recruitment.php">Recruitment</a></li>
+					</ol>
+				</div>
+				<div class="container_12" id="content">
+				<%= yield %>
+				</div>
+				
+			</div>
+		</div>
+		
+	</body>
 </html>

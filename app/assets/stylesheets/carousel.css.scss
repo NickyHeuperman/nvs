@@ -1,0 +1,34 @@
+.carousel {
+    width:255px;
+    height:64px;   
+    margin:0 auto;
+}
+ 
+.slides {
+    overflow:hidden;
+    /* fix ie overflow issue */
+    position:relative;
+    width:760px;
+    height:64px;
+	margin:auto;
+	margin-top:30px;
+}
+ 
+/* remove the list styles, width : item width * total items */ 
+.slides ul {
+    position:relative;
+    left:0;
+    top:0;
+    list-style:none;
+
+    width:4700px;            
+}
+ 
+/* width of the item, in this case I put 250x250x gif */
+.slides li {
+	width:760px;
+    height:64px;   
+	display:inline-block;
+	margin:auto;
+}
+.clear {clear:both}
