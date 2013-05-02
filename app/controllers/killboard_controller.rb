@@ -3,6 +3,7 @@ class KillboardController < ApplicationController
   @statistics=YapCorpVictim.getThisWeekKillCount()
 	  respond_to do |format|
 		  format.html
+		  format.json { render json: @statistics }
 	  end
   end
 

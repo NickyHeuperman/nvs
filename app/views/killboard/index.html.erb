@@ -73,7 +73,27 @@
 	</tr>
   </thead>
   <tbody>
-  <% (45..49).each do |i| %>
+  <% (45..59).each do |i| %>
+  <tr>
+    <td><%= @statistics[i].groupName %></td>
+	<td><%= @statistics[i].kills %></td>
+	<td><%= @statistics[i].losses %></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+    <th>Ship class</th>
+    <th>K</th>
+	<th>L</th>
+	</tr>
+  </thead>
+  <tbody>
+  <% (60..68).each do |i| %>
   <tr>
     <td><%= @statistics[i].groupName %></td>
 	<td><%= @statistics[i].kills %></td>
