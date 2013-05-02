@@ -11,5 +11,32 @@ class YapCorpVictim < ActiveRecord::Yapeal
 			AND yap_corpAttackers.finalBlow =1
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC  LIMIT ?",amount])
 	end
+	def self.getThisWeekKillCount()
+		YapCorpVictim.find_by_sql("SELECT EveDataDump.invTypes.groupID as groupID, EveDataDump.invGroups.groupName as groupName ,count(yap_corpKillLog.killID) as count,CAST(SUM(if(yap_corpVictim.allianceName =  'Novus Dominatum', 1, 0))AS SIGNED) AS losses,CAST(SUM(if(yap_corpVictim.allianceName <>  'Novus Dominatum', 1, 0))AS SIGNED) AS kills
+FROM EveDataDump.invGroups
+INNER JOIN EveDataDump.invTypes on EveDataDump.invTypes.groupID=EveDataDump.invGroups.groupID
+LEFT JOIN yapeal.yap_corpVictim on yapeal.yap_corpVictim.shipTypeID=EveDataDump.invTypes.typeID
+LEFT JOIN yapeal.yap_corpKillLog ON yapeal.yap_corpVictim.killID = yapeal.yap_corpKillLog.killID
+LEFT JOIN yapeal.yap_corpAttackers ON yapeal.yap_corpAttackers.killID = yapeal.yap_corpKillLog.killID
+WHERE (EveDataDump.invGroups.categoryID=6 OR
+EveDataDump.invGroups.categoryID=23)
+AND (yapeal.yap_corpKillLog.killTime IS NULL OR
+(WEEK(yapeal.yap_corpKillLog.killTime) = WEEK(CURDATE())
+AND YEAR(yapeal.yap_corpKillLog.killTime) = YEAR(CURDATE())))
+GROUP BY EveDataDump.invTypes.groupID
+		ORDER BY  EveDataDump.invGroups.categoryID,EveDataDump.invGroups.groupName ASC")
+	end
+	def self.getOverallKillCount()
+		YapCorpVictim.find_by_sql("SELECT EveDataDump.invTypes.groupID as groupID, EveDataDump.invGroups.groupName as groupName ,count(yap_corpKillLog.killID) as count,CAST(SUM(if(yap_corpVictim.allianceName =  'Novus Dominatum', 1, 0)) AS SIGNED) AS losses,CAST(SUM(if(yap_corpVictim.allianceName <>  'Novus Dominatum', 1, 0))AS SIGNED) AS kills
+FROM EveDataDump.invGroups
+INNER JOIN EveDataDump.invTypes on EveDataDump.invTypes.groupID=EveDataDump.invGroups.groupID
+LEFT JOIN yapeal.yap_corpVictim on yapeal.yap_corpVictim.shipTypeID=EveDataDump.invTypes.typeID
+LEFT JOIN yapeal.yap_corpKillLog ON yapeal.yap_corpVictim.killID = yapeal.yap_corpKillLog.killID
+LEFT JOIN yapeal.yap_corpAttackers ON yapeal.yap_corpAttackers.killID = yapeal.yap_corpKillLog.killID
+WHERE (EveDataDump.invGroups.categoryID=6 OR
+EveDataDump.invGroups.categoryID=23)
+GROUP BY EveDataDump.invTypes.groupID
+		ORDER BY  EveDataDump.invGroups.categoryID,EveDataDump.invGroups.groupName ASC")
+	end
 
 end
