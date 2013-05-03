@@ -1,3 +1,29 @@
 // Place all the styles related to the killboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.kb_table{
+background-color:#000;
+font-family:Verdana,"Bitstream Vera Sans",Arial,Helvetica;
+font-size:12px;
+}
+.black_bg{
+background-color:#000;
+}
+.shipClassColumn{
+color:#044998;
+}
+.killCountColumn{
+color:#00ff00;
+}
+.lossCountColumn{
+color:#ff0000;
+}
+th{
+color:#fff;
+}
+table>tbody>tr>td>table>tbody>tr:hover{
+background-color:#fff;
+}
+td,th{
+border:1px solid white;
+}
