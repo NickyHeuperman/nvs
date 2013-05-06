@@ -13,6 +13,11 @@ class KillboardController < ApplicationController
   end
 
   def kill
+  @loadout = YapealDatabase.getKillInventory(params[:id])
+  respond_to do |format|
+		  format.html
+  
+  end
   end
   def char
   end

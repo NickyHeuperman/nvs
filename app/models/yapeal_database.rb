@@ -14,6 +14,17 @@ class YapealDatabase < ActiveRecord::Yapeal
 			AND WEEK(`yap_corpKillLog`.`killTime`)=?
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
 	end
+	def self.getKillInventory(killid)
+	@items = YapealDatabase.find_by_sql(["SELECT `yap_corpItems`.flag as flag, `yap_corpItems`.killID as killID, `yap_corpItems`.lft as lft, `yap_corpItems`.lvl as lvl, `yap_corpItems`.rgt as rgt,`yap_corpItems`.qtyDropped as qtyDropped, `yap_corpItems`.qtyDestroyed as qtryDestroyed,`yap_corpItems`.singleton as singleton,`yap_corpItems`.typeID as typeID, EveDataDump.invTypes.typeName as typeName,EveDataDump.invGroups.categoryID as categoryID FROM `yap_corpItems`
+INNER JOIN EveDataDump.invTypes ON EveDataDump.invTypes.typeID = yap_corpItems.typeID 
+INNER JOIN EveDataDump.invGroups ON EveDataDump.invTypes.groupID = EveDataDump.invGroups.groupID
+WHERE `killID` =?",killid])
+	@fitting = Fitting.new(@items,getShipTypeForKill(killid))
+	return @fitting
+	end
+	def self.getShipTypeForKill(killid)
+	YapealDatabase.find_by_sql(["SELECT `shipTypeID` FROM `yap_corpVictim` WHERE `killID` =?",killid]).first.shipTypeID
+	end
 	def self.getShipClasses()
 		YapealDatabase.find_by_sql(
 		"select EveDataDump.invTypes.groupID as groupID, EveDataDump.invGroups.groupName as groupName FROM EveDataDump.invGroups

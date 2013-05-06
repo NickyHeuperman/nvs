@@ -1,0 +1,39 @@
+<canvas id="fittingCanvas" width="512px" height="512px"></canvas>
+				<!--<img id="canvasImg"/>-->
+				<div id="killContainer" style="background-image:url(http://image.eveonline.com/Render/<%= @loadout.shipTypeID %>_512.png);width:512px;height:512px;">
+					<div id="fittingContainer">
+					<div id="hiPower1" class="fittingModule"><% if @loadout.hiSlots[1]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[1].typeID %>_32.png" title="<%= @loadout.hiSlots[1].typeName%>"/><% end%></div>
+					<div id="hiPower2" class="fittingModule"><% if @loadout.hiSlots[2]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[2].typeID %>_32.png" title="<%= @loadout.hiSlots[2].typeName%>"/><% end%></div>
+					<div id="hiPower3" class="fittingModule"><% if @loadout.hiSlots[3]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[3].typeID %>_32.png" title="<%= @loadout.hiSlots[3].typeName%>"/><% end%></div>
+					<div id="hiPower4" class="fittingModule"><% if @loadout.hiSlots[4]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[4].typeID %>_32.png" title="<%= @loadout.hiSlots[4].typeName%>"/><% end%></div>
+					<div id="hiPower5" class="fittingModule"><% if @loadout.hiSlots[5]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[5].typeID %>_32.png" title="<%= @loadout.hiSlots[5].typeName%>"/><% end%></div>
+					<div id="hiPower6" class="fittingModule"><% if @loadout.hiSlots[6]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[6].typeID %>_32.png" title="<%= @loadout.hiSlots[6].typeName%>"/><% end%></div>
+					<div id="hiPower7" class="fittingModule"><% if @loadout.hiSlots[7]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[7].typeID %>_32.png" title="<%= @loadout.hiSlots[7].typeName%>"/><% end%></div>
+					<div id="hiPower8" class="fittingModule"><% if @loadout.hiSlots[8]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.hiSlots[8].typeID %>_32.png" title="<%= @loadout.hiSlots[8].typeName%>"/><% end%></div>
+					<div id="medPower1" class="fittingModule"><% if @loadout.medSlots[1]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[1].typeID %>_32.png" title="<%= @loadout.medSlots[1].typeName%>"/><% end%></div>
+					<div id="medPower2" class="fittingModule"><% if @loadout.medSlots[2]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[2].typeID %>_32.png" title="<%= @loadout.medSlots[2].typeName%>"/><% end%></div>
+					<div id="medPower3" class="fittingModule"><% if @loadout.medSlots[3]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[3].typeID %>_32.png" title="<%= @loadout.medSlots[3].typeName%>"/><% end%></div>
+					<div id="medPower4" class="fittingModule"><% if @loadout.medSlots[4]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[4].typeID %>_32.png" title="<%= @loadout.medSlots[4].typeName%>"/><% end%></div>
+					<div id="medPower5" class="fittingModule"><% if @loadout.medSlots[5]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[5].typeID %>_32.png" title="<%= @loadout.medSlots[5].typeName%>"/><% end%></div>
+					<div id="medPower6" class="fittingModule"><% if @loadout.medSlots[6]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[6].typeID %>_32.png" title="<%= @loadout.medSlots[6].typeName%>"/><% end%></div>
+					<div id="medPower7" class="fittingModule"><% if @loadout.medSlots[7]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[7].typeID %>_32.png" title="<%= @loadout.medSlots[7].typeName%>"/><% end%></div>
+					<div id="medPower8" class="fittingModule"><% if @loadout.medSlots[8]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.medSlots[8].typeID %>_32.png" title="<%= @loadout.medSlots[8].typeName%>"/><% end%></div>
+					<div id="loPower1" class="fittingModule"><% if @loadout.loSlots[1]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[1].typeID %>_32.png" title="<%= @loadout.loSlots[1].typeName%>"/><% end%></div>
+					<div id="loPower2" class="fittingModule"><% if @loadout.loSlots[2]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[2].typeID %>_32.png" title="<%= @loadout.loSlots[2].typeName%>"/><% end%></div>
+					<div id="loPower3" class="fittingModule"><% if @loadout.loSlots[3]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[3].typeID %>_32.png" title="<%= @loadout.loSlots[3].typeName%>"/><% end%></div>
+					<div id="loPower4" class="fittingModule"><% if @loadout.loSlots[4]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[4].typeID %>_32.png" title="<%= @loadout.loSlots[4].typeName%>"/><% end%></div>
+					<div id="loPower5" class="fittingModule"><% if @loadout.loSlots[5]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[5].typeID %>_32.png" title="<%= @loadout.loSlots[5].typeName%>"/><% end%></div>
+					<div id="loPower6" class="fittingModule"><% if @loadout.loSlots[6]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[6].typeID %>_32.png" title="<%= @loadout.loSlots[6].typeName%>"/><% end%></div>
+					<div id="loPower7" class="fittingModule"><% if @loadout.loSlots[7]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[7].typeID %>_32.png" title="<%= @loadout.loSlots[7].typeName%>"/><% end%></div>
+					<div id="loPower8" class="fittingModule"><% if @loadout.loSlots[8]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.loSlots[8].typeID %>_32.png" title="<%= @loadout.loSlots[8].typeName%>"/><% end%></div>
+					<div id="rig1" class="fittingModule"><% if @loadout.rigs[1]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.rigs[1].typeID %>_32.png" title="<%= @loadout.rigs[1].typeName%>"/><% end%></div>
+					<div id="rig2" class="fittingModule"><% if @loadout.rigs[2]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.rigs[2].typeID %>_32.png" title="<%= @loadout.rigs[2].typeName%>"/><% end%></div>
+					<div id="rig3" class="fittingModule"><% if @loadout.rigs[3]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.rigs[3].typeID %>_32.png" title="<%= @loadout.rigs[3].typeName%>"/><% end%></div>
+					<div id="subSystem1" class="fittingModule"><% if @loadout.subSystems[1]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.subSystems[1].typeID %>_32.png" title="<%= @loadout.subSystems[1].typeName%>"/><% end%></div>
+					<div id="subSystem2" class="fittingModule"><% if @loadout.subSystems[2]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.subSystems[2].typeID %>_32.png" title="<%= @loadout.subSystems[2].typeName%>"/><% end%></div>
+					<div id="subSystem3" class="fittingModule"><% if @loadout.subSystems[3]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.subSystems[3].typeID %>_32.png" title="<%= @loadout.subSystems[3].typeName%>"/><% end%></div>
+					<div id="subSystem4" class="fittingModule"><% if @loadout.subSystems[4]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.subSystems[4].typeID %>_32.png" title="<%= @loadout.subSystems[4].typeName%>"/><% end%></div>
+					<div id="subSystem5" class="fittingModule"><% if @loadout.subSystems[5]!=nil then %><img src="http://image.eveonline.com/InventoryType/<%= @loadout.subSystems[5].typeID %>_32.png" title="<%= @loadout.subSystems[5].typeName%>"/><% end%></div>
+					
+					</div>
+				</div>
