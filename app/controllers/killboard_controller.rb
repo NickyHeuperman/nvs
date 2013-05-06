@@ -4,6 +4,8 @@ class KillboardController < ApplicationController
 	if(params[:year] == nil) then params[:year]=Date.today.year end
 	@week = params[:week]
   @statistics=YapealDatabase.getWeekKillCount(params[:year],params[:week])
+  @amount = YapealDatabase.getWeekKillWorth(params[:year],params[:week]).first
+  @kills = YapealDatabase.getWeekKills(params[:year],params[:week])
 	  respond_to do |format|
 		  format.html
 		  format.json { render json: @statistics }
@@ -11,5 +13,9 @@ class KillboardController < ApplicationController
   end
 
   def kill
+  end
+  def char
+  end
+  def corp
   end
 end

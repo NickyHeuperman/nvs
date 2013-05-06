@@ -2,9 +2,14 @@ NovusDominatum::Application.routes.draw do
   get "killboard/index"
 
   get "killboard/kill"
+  get "killboard/char"
+  get "killboard/corp"
 
   get "home/index"
   match "/killboard/index/:year/:week" => "killboard#index"
+  match "/killboard/kill/:id" => "killboard#kill"
+  match "/killboard/corp/:id" => "killboard#corp"
+  match "/killboard/char/:id" => "killboard#char"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
