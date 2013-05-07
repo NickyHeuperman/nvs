@@ -1,0 +1,80 @@
+<div class="black_bg">
+    <div class="container_12 header alpha omega">
+      <span>NVS //</span> Losses week <%= @week %>
+    </div>
+
+    <table class="kb-table">
+      <thead>
+        <tr>
+          <th class="kl-shiptype" colspan="2">Ship type</td>
+
+          <th colspan="2" class="kl-victim">Victim</td>
+
+          <th class="kl-finalblow">Final blow</td>
+
+          <!--<th class="kl-location">Location</td>-->
+        </tr>
+      </thead>
+
+      <tbody>
+	  <% @losses.each do |kill| %>
+        <tr onclick=
+        "window.location.href='<%= url_for(:action => 'kill', :controller => 'killboard') %>/<%= kill.killID %>';">
+        <td class="kb-table-imgcell"><img src=
+        "http://image.eveonline.com/InventoryType/<%= kill.typeID%>_32.png" style=
+        "width: 32px; height: 32px;" alt="" /></td>
+
+          <td class="kl-shiptype-text">
+            <div class="no_stretch kl-shiptype-text">
+              <b><%= kill.shipName %></b><br />
+              <%= kill.groupName %>
+            </div>
+          </td>
+
+          <td class="kb-table-imgcell"><img src=
+          "http://image.eveonline.com/Corporation/<%= kill.victimCorpID %>_32.png" style=
+          "border: 0px; width: 32px; height: 32px;" title="None" alt="None" /></td>
+
+          <td class="kl-victim-text">
+            <div class="no_stretch kl-victim-text">
+              <a href="
+              <%= url_for(:action => 'char', :controller => 'killboard') %>/<%= kill.victimID %>">
+              <b><%= kill.victim %></b></a><br />
+              <a href=
+              "<%= url_for(:action => 'corp', :controller => 'killboard') %>/<%= kill.victimCorpID %>"><%= kill.victimCorp %></a>
+            </div>
+          </td>
+
+          <td class="kl-finalblow">
+            <div class="no_stretch kl-finalblow">
+              <a href=
+              "<%= url_for(:action => 'char', :controller => 'killboard') %>/<%= kill.attackerID %>">
+              <b><%= kill.attacker %></b></a><br />
+              <a href=
+              "<%= url_for(:action => 'corp', :controller => 'killboard') %>/<%= kill.attackerCorpID %>"><%= kill.attackerCorpName %></a>
+            </div>
+          </td>
+
+          <!--<td class="kb-table-cell kl-location">
+            <div class="no_stretch kl-location">
+              Tribute, E-OGL4 (<span style="color:red;">0.0</span>)<br />
+            </div>
+
+            <div class="kl-inv-comm">
+              <img src=
+              "http://www.eve-razor.com/killboard/themes/default/img/involved10_10.png"
+              alt="I:" /> 1 <span style="visibility: hidden"><img src=
+              "http://www.eve-razor.com/killboard/themes/default/img/comment_white13_10.gif"
+              alt="C:" /> 0</span>
+            </div>
+
+            <div class="kl-date">
+              <a href=
+              "http://www.eve-razor.com/killboard/?a=kill_related&amp;kll_id=573293"><b>15:04</b></a>
+            </div>
+          </td>-->
+        </tr>
+<% end %>
+      </tbody>
+    </table>
+  </div>

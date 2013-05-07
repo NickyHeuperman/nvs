@@ -6,6 +6,7 @@ class KillboardController < ApplicationController
   @statistics=YapealDatabase.getWeekKillCount(params[:year],params[:week])
   @amount = YapealDatabase.getWeekKillWorth(params[:year],params[:week]).first
   @kills = YapealDatabase.getWeekKills(params[:year],params[:week])
+  @losses = YapealDatabase.getWeekLosses(params[:year],params[:week])
 	  respond_to do |format|
 		  format.html
 		  format.json { render json: @statistics }

@@ -14,6 +14,20 @@ class YapealDatabase < ActiveRecord::Yapeal
 			AND WEEK(`yap_corpKillLog`.`killTime`)=?
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
 	end
+	def self.getWeekLosses(year,week)
+		YapealDatabase.find_by_sql(["SELECT yap_corpVictim.characterName AS victim, EveDataDump.invGroups.groupName as groupName,yap_corpVictim.killID AS killID,yap_corpVictim.shipTypeID as typeID,yap_corpVictim.characterID as victimID,yap_corpVictim.corporationID as victimCorpID,yap_corpVictim.corporationName as victimCorp, yap_corpAttackers.characterName AS attacker,yap_corpAttackers.corporationName as attackerCorpName,yap_corpAttackers.corporationID as attackerCorpID,yap_corpAttackers.characterID as attackerID,yap_corpAttackers.shipTypeID as attackerShipID, yap_corpKillLog.killID, EveDataDump.invTypes.typeName as shipName
+			FROM yap_corpKillLog
+			INNER JOIN yap_corpVictim ON yap_corpVictim.killID = yap_corpKillLog.killID
+			INNER JOIN yap_corpAttackers ON yap_corpAttackers.killID = yap_corpKillLog.killID
+		INNER JOIN EveDataDump.invTypes on EveDataDump.invTypes.typeID=yap_corpVictim.shipTypeID
+		INNER JOIN EveDataDump.invGroups on EveDataDump.invTypes.groupID=EveDataDump.invGroups.groupID
+			WHERE yap_corpVictim.allianceID =  99000203
+			AND yap_corpAttackers.allianceID <>  99000203
+			AND yap_corpAttackers.finalBlow =1
+			AND YEAR(`yap_corpKillLog`.`killTime`)=?
+			AND WEEK(`yap_corpKillLog`.`killTime`)=?
+		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
+	end
 	def self.getKillInventory(killid)
 	@items = YapealDatabase.find_by_sql(["SELECT `yap_corpItems`.flag as flag, `yap_corpItems`.killID as killID, `yap_corpItems`.lft as lft, `yap_corpItems`.lvl as lvl, `yap_corpItems`.rgt as rgt,`yap_corpItems`.qtyDropped as qtyDropped, `yap_corpItems`.qtyDestroyed as qtryDestroyed,`yap_corpItems`.singleton as singleton,`yap_corpItems`.typeID as typeID, EveDataDump.invTypes.typeName as typeName,EveDataDump.invGroups.categoryID as categoryID FROM `yap_corpItems`
 INNER JOIN EveDataDump.invTypes ON EveDataDump.invTypes.typeID = yap_corpItems.typeID 
