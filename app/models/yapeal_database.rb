@@ -1,7 +1,7 @@
 class YapealDatabase < ActiveRecord::Yapeal
 	set_table_name "yap_corpVictim"
 	def self.getWeekKills(year,week)
-		YapealDatabase.find_by_sql(["SELECT yap_corpVictim.characterName AS victim, EveDataDump.invGroups.groupName as groupName,yap_corpVictim.killID AS killID,yap_corpVictim.shipTypeID as typeID,yap_corpVictim.characterID as victimID,yap_corpVictim.corporationID as victimCorpID,yap_corpVictim.corporationName as victimCorp, yap_corpAttackers.characterName AS attacker,yap_corpAttackers.corporationName as attackerCorpName,yap_corpAttackers.corporationID as attackerCorpID,yap_corpAttackers.characterID as attackerID,yap_corpAttackers.shipTypeID as attackerShipID, yap_corpKillLog.killID, EveDataDump.invTypes.typeName as shipName
+		YapealDatabase.find_by_sql(["SELECT yap_corpVictim.characterName AS victim, EveDataDump.invGroups.groupName as groupName,yap_corpVictim.shipTypeID as typeID,yap_corpVictim.characterID as victimID,yap_corpVictim.corporationID as victimCorpID,yap_corpVictim.corporationName as victimCorp, yap_corpAttackers.characterName AS attacker,yap_corpAttackers.corporationName as attackerCorpName,yap_corpAttackers.corporationID as attackerCorpID,yap_corpAttackers.characterID as attackerID,yap_corpAttackers.shipTypeID as attackerShipID, yap_corpKillLog.killID as killID, EveDataDump.invTypes.typeName as shipName
 			FROM yap_corpKillLog
 			INNER JOIN yap_corpVictim ON yap_corpVictim.killID = yap_corpKillLog.killID
 			INNER JOIN yap_corpAttackers ON yap_corpAttackers.killID = yap_corpKillLog.killID
@@ -15,7 +15,7 @@ class YapealDatabase < ActiveRecord::Yapeal
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
 	end
 	def self.getWeekLosses(year,week)
-		YapealDatabase.find_by_sql(["SELECT yap_corpVictim.characterName AS victim, EveDataDump.invGroups.groupName as groupName,yap_corpVictim.killID AS killID,yap_corpVictim.shipTypeID as typeID,yap_corpVictim.characterID as victimID,yap_corpVictim.corporationID as victimCorpID,yap_corpVictim.corporationName as victimCorp, yap_corpAttackers.characterName AS attacker,yap_corpAttackers.corporationName as attackerCorpName,yap_corpAttackers.corporationID as attackerCorpID,yap_corpAttackers.characterID as attackerID,yap_corpAttackers.shipTypeID as attackerShipID, yap_corpKillLog.killID, EveDataDump.invTypes.typeName as shipName
+		YapealDatabase.find_by_sql(["SELECT yap_corpVictim.characterName AS victim, EveDataDump.invGroups.groupName as groupName,yap_corpVictim.shipTypeID as typeID,yap_corpVictim.characterID as victimID,yap_corpVictim.corporationID as victimCorpID,yap_corpVictim.corporationName as victimCorp, yap_corpAttackers.characterName AS attacker,yap_corpAttackers.corporationName as attackerCorpName,yap_corpAttackers.corporationID as attackerCorpID,yap_corpAttackers.characterID as attackerID,yap_corpAttackers.shipTypeID as attackerShipID, yap_corpKillLog.killID as killID, EveDataDump.invTypes.typeName as shipName
 			FROM yap_corpKillLog
 			INNER JOIN yap_corpVictim ON yap_corpVictim.killID = yap_corpKillLog.killID
 			INNER JOIN yap_corpAttackers ON yap_corpAttackers.killID = yap_corpKillLog.killID
