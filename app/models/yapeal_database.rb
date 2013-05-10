@@ -12,6 +12,7 @@ class YapealDatabase < ActiveRecord::Yapeal
 			AND yap_corpAttackers.finalBlow =1
 			AND YEAR(`yap_corpKillLog`.`killTime`)=?
 			AND WEEK(`yap_corpKillLog`.`killTime`)=?
+			GROUP BY yap_corpKillLog.killID
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
 	end
 	def self.getWeekLosses(year,week)
@@ -26,6 +27,7 @@ class YapealDatabase < ActiveRecord::Yapeal
 			AND yap_corpAttackers.finalBlow =1
 			AND YEAR(`yap_corpKillLog`.`killTime`)=?
 			AND WEEK(`yap_corpKillLog`.`killTime`)=?
+		GROUP BY yap_corpKillLog.killID
 		ORDER BY  `yap_corpKillLog`.`killTime` DESC",year,week])
 	end
 	def self.getKillInventory(killid)
